@@ -1,4 +1,4 @@
-# hunspell
+# hunspell.cr
 
 * [Source](https://github.com/postmodern/hunspell.cr)
 * [Issues](https://github.com/postmodern/hunspell.cr/issues)
