@@ -20,7 +20,7 @@ Ruby [ffi-hunspell] gem and should be API compatible.
 
          $ sudo dnf install hunspell-devel hunspell-en
 
-    * macOS:
+   * macOS:
 
          $ brew install hunspell
 
