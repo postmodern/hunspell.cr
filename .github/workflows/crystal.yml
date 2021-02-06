@@ -1,0 +1,19 @@
+name: CI
+
+on: [ push, pull_request ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: crystallang/crystal
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install libhunspell
+      run: |
+        sudo apt update -y && \
+        sudo apt install -y --no-install-recommends --no-install-suggests libhunspell-dev hunspell-en-us
+    - name: Install dependencies
+      run: shards install
+    - name: Run tests
+      run: crystal spec
