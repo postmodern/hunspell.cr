@@ -95,4 +95,5 @@ TODO: Write development instructions here
 - [Postmodern](https://github.com/postmodern) - creator and maintainer
 
 [crystal]: https://crystal-lang.org/
+[libhunspell]: http://hunspell.github.io/
 [ffi-hunspell]: https://github.com/postmodern/ffi-hunspell#readme
