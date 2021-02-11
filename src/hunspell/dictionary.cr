@@ -209,7 +209,7 @@ module Hunspell
 
       if count > 0
         stems = Array.new(count) do |i|
-          force_encoding(String.new(output[i]))
+          force_encoding(output[i])
         end
       end
 
@@ -233,7 +233,7 @@ module Hunspell
 
       if count > 0
         suggestions = Array.new(count) do |i|
-          force_encoding(String.new(output[i]))
+          force_encoding(output[i])
         end
       end
 
@@ -261,17 +261,8 @@ module Hunspell
       @ptr.not_nil!
     end
 
-    #
-    # Encodes a String into the dictionary's encoding.
-    #
-    # @param [String] string
-    #   The unencoded String.
-    #
-    # @return [String]
-    #   The encoded String.
-    #
-    private def force_encoding(string : String)
-      String.new(string.encode(encoding), encoding)
+    private def force_encoding(ptr : LibC::Char *) : String
+      String.new(Bytes.new(ptr,LibC.strlen(ptr)),encoding)
     end
 
   end
