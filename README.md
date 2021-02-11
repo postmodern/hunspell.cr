@@ -80,7 +80,10 @@ dict.suggest("arbitrage")
 
 ## Development
 
-TODO: Write development instructions here
+After installing `libhunspell` (see [Installation](#installation)):
+
+    $ shards install
+    $ crystal spec
 
 ## Contributing
 
