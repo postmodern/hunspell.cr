@@ -211,6 +211,8 @@ module Hunspell
         stems = Array.new(count) do |i|
           force_encoding(output[i])
         end
+
+        LibHunspell.Hunspell_free_list(self,pointerof(output),count)
       end
 
       return stems
@@ -235,6 +237,8 @@ module Hunspell
         suggestions = Array.new(count) do |i|
           force_encoding(output[i])
         end
+
+        LibHunspell.Hunspell_free_list(self,pointerof(output),count)
       end
 
       return suggestions
