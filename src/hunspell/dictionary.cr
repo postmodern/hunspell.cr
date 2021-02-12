@@ -55,6 +55,17 @@ module Hunspell
     end
 
     #
+    # Finalizes the underlying `libhunspell` handler pointer, if it already
+    # hasn't been deallocated by `#close`.
+    #
+    def finalize
+      @ptr.try do |ptr|
+        LibHunspell.Hunspell_destroy(ptr)
+        @ptr = nil
+      end
+    end
+
+    #
     # Opens a Hunspell dictionary.
     #
     # @param [Symbol, String] name
@@ -250,9 +261,7 @@ module Hunspell
     # @return [nil]
     #
     def close
-      LibHunspell.Hunspell_destroy(self)
-
-      @ptr = nil
+      finalize unless closed?
     end
 
     #
