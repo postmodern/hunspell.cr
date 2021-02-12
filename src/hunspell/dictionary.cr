@@ -59,10 +59,7 @@ module Hunspell
     # hasn't been deallocated by `#close`.
     #
     def finalize
-      @ptr.try do |ptr|
-        LibHunspell.Hunspell_destroy(ptr)
-        @ptr = nil
-      end
+      close
     end
 
     #
@@ -261,7 +258,10 @@ module Hunspell
     # @return [nil]
     #
     def close
-      finalize unless closed?
+      @ptr.try do |ptr|
+        LibHunspell.Hunspell_destroy(ptr)
+        @ptr = nil
+      end
     end
 
     #
